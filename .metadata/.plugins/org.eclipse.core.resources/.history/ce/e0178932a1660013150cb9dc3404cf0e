@@ -1,0 +1,29 @@
+/*
+ * my_sem.h
+ *
+ *  Created on: Dec 9, 2013
+ *      Author: zsims
+ */
+
+#ifndef MY_SEM_H_
+#define MY_SEM_H_
+#include "thread_handler.h"
+
+typedef struct{
+	int count;
+	int waiters;
+	tcb* waitQueue[8];
+} sem;
+
+sem* mysem_create(int size, char ID);
+
+void mysem_signal(sem* pSem);
+
+void mysem_wait(sem* pSem);
+
+void mysem_delete(sem* pSem);
+
+int mysem_count(sem* pSem);
+
+
+#endif /* MY_SEM_H_ */
